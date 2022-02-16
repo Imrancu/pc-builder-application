@@ -26,6 +26,7 @@ onClick('paid-delivery', 'delivery-cost', 20);
 function onClick(clickId, updateID, price) {
     document.getElementById(clickId).addEventListener('click', function() {
         updatePrice(updateID, price);
+
     })
 }
 
@@ -54,6 +55,7 @@ applyBtn.addEventListener('click', function() {
         const discount = (updatePrice * 20) / 100;
         updatePrice = updatePrice - discount;
         totalPrice.innerText = updatePrice;
+        document.getElementById('applied-text').style.discount = ''
     } else {
         alert('Please, input a valid promo code!')
     }
