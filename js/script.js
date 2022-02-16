@@ -39,7 +39,23 @@ function updatePrice(itemId, price) {
     const storageCost = document.getElementById('storage-cost').innerText;
     const deliveryCost = document.getElementById('delivery-cost').innerText;
 
-    const totalCost = parseFloat(bestCost) + parseFloat(memoryCost) + parseFloat(storageCost) + parseFloat(deliveryCost);
+    var totalCost = parseFloat(bestCost) + parseFloat(memoryCost) + parseFloat(storageCost) + parseFloat(deliveryCost);
     const totalPrice = document.getElementById('total-price');
     totalPrice.innerText = totalCost;
 }
+const promoCode = "phero";
+const applyBtn = document.getElementById('apply-btn');
+applyBtn.addEventListener('click', function() {
+    const promoInput = document.getElementById('promo-input').value;
+    if (promoInput === promoCode) {
+        const totalPrice = document.getElementById('total-price');
+        let updatePrice = parseFloat(totalPrice.innerText);
+        // const discount = updatePrice * .2;
+        const discount = (updatePrice * 20) / 100;
+        updatePrice = updatePrice - discount;
+        totalPrice.innerText = updatePrice;
+    } else {
+        alert('Please, input a valid promo code!')
+    }
+
+})
